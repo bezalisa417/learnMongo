@@ -3,17 +3,24 @@ const {Schema, model} = require('mongoose');
 const postSchema = new Schema ({
     title: {
         type: String,
-        required: true
+        require: true
     },
     body: {
         type: String,
-        required: true
+        require: true
     },
     author: { 
           type: Schema.Types.ObjectId,
           ref:'User',
-          required: true   
+          require: true   
+    },
+    category:  {
+        type: Schema.Types.ObjectId,
+        ref:'Category',
+        require: true
     }
 })
+
+
 
 module.exports = model('Post',postSchema);
