@@ -3,21 +3,21 @@ const {Schema, model} = require('mongoose');
 const postSchema = new Schema ({
     title: {
         type: String,
-        require: true
+        required: true
     },
     body: {
         type: String,
-        require: true
+        required: true
     },
     author: { 
           type: Schema.Types.ObjectId,
           ref:'User',
-          require: true   
+          required: true   
     },
     category:  {
         type: Schema.Types.ObjectId,
         ref:'Category',
-        require: true
+        required: true
     }
 })
 

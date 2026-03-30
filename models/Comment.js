@@ -3,17 +3,17 @@ const {Schema, model} = require('mongoose');
 const commentSchema = new Schema({
     text: {
         type: String,
-        require: true
+        required: true
     },
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        require: true
+        required: true
     },
     post: {
         type: Schema.Types.ObjectId,
         ref: 'Post',
-        require: true
+        required: true
     },
 })
 

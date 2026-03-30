@@ -12,8 +12,11 @@ connectDB();
 
 //routes
 app.use('/api/users', require('./routes/users.js'));
-app.use('/api/posts',require('./routes/posts.js')); 
+app.use('/api/posts', require('./routes/posts.js'));
+app.use(['/api/comment', '/api/comments'], require('./routes/comment.js'));
+app.use('/api/auth', require('./routes/auth.js'));
 
-app.listen(3000,() => {
-    console.log('server connect to port 3000');
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`server connect to port ${port}`);
 })

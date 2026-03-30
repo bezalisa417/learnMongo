@@ -3,15 +3,15 @@ const {Schema, model} = require('mongoose')
 const productSchema = new Schema({
     name:{ 
         type: String,
-        require: true
+        required: true
     },
     quantinty:{
         type: Number,
-        require: true,
+        required: true,
     },
     price:{
         type: Number,
-        require: true,
+        required: true,
     }
 })
 module.exports = model('Product', productSchema)
