@@ -1,17 +1,27 @@
-const jwt = require('jsonwebtoken');
+const jweb = require('jsonwebtoken');
 
 const protect = (req,res,next) => {
-    const authHeader = req.header.authentirization;
+    const authHeader = req.headers.authorization;
+     
 
-    //cheak header
-    if(!authHeader  || !authHeader.startsWith("Bearer ")){
+    //check header
+    if(!authHeader || !authHeader.startsWith("Bearer ")){
         return res.json({message: "Unauthorized"});
     }
-    const token = authHeader.split(' ')[1];
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const token = authHeader.split(' ')[2];
+    if(!token){
+        return res.json({message: "Unauthorized"});
+    }
+    const decoded = jweb.verify(token, process.env.JWT_SECRET);
 
     //attach user 
     req.user = decoded.id;
 
+    next();
+
 }
 module.exports = protect;
+
+
+
+//Middleware is a function that runs before the main route and decides what should happen next.
