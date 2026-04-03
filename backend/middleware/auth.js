@@ -8,7 +8,8 @@ const protect = (req,res,next) => {
     if(!authHeader || !authHeader.startsWith("Bearer ")){
         return res.json({message: "Unauthorized"});
     }
-    const token = authHeader.split(' ')[2];
+    const token = authHeader.split(' ')[1];
+    console.log(token);
     if(!token){
         return res.json({message: "Unauthorized"});
     }
